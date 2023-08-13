@@ -29,21 +29,21 @@ Use the following command to run a standalone MinIO server on Linux hosts runnin
 sudo -s
 cd ~
 ```
-1. Download and Prepare MinIO Binary:
+2. Download and Prepare MinIO Binary:
 ```sh
 wget https://dl.min.io/server/minio/release/linux-amd64/minio
 chmod +x minio
 ```
-1. Start MinIO Server with the Default Storage Location (Optional):
+3. Start MinIO Server with the Default Storage Location (Optional):
 ```sh
 ./minio server /minio
 ```
-1. Check MinIO Binary Location and Move MinIO Binary to System Bin Directory::
+4. Check MinIO Binary Location and Move MinIO Binary to System Bin Directory::
 ```sh 
 which minio
 mv minio /usr/local/bin
 ```
-1. Create a Directory for MinIO Data and Start the Server:
+5. Create a Directory for MinIO Data and Start the Server:
 ```sh
 mkdir ~/minio
 minio server ~/minio --console-address :9090
