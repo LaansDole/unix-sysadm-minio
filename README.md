@@ -1,4 +1,4 @@
-![header image](assets/cosc2156.png)
+![2](https://github.com/LaansDole/unix-sysadm-MinIO/assets/88642920/d592a6a4-43d6-4765-8183-a9b1b15e6d28)![header image](assets/cosc2156.png)
 
 # COSC2156 Unix Systems Administration and Programming (Linux) - MinIO Storage
 #### Project Start Date: 04/08/2023
@@ -107,5 +107,63 @@ mc ls -r local
 ```
 
 
+## Project Demo on GNU/Linux (GCP Ubuntu)
+Use the following command to run a distributed MinIO object storage system on a GCP cloud server. 
+1. Create GCP VM instances (repeat at least 2 times)
+![1](https://github.com/LaansDole/unix-sysadm-MinIO/assets/88642920/69154cca-6e4b-4521-bd7d-e9319d8b3764)
 
+2. Attach block devices to VM instances (repeat for each node)
+![2](https://github.com/LaansDole/unix-sysadm-MinIO/assets/88642920/0d3b45af-426c-476b-8c39-7f7289dae7e9)
 
+3. Make an XFS file system on each of the attached block devices and label them
+
+```sh
+mkfs.xfs -f /dev/sdb -L DISK1
+mkfs.xfs -f /dev/sdc -L DISK2
+```
+4. Create mount-points for the block devices
+```sh
+mkdir /mnt/disk1
+mkdir /mnt/disk2
+```
+
+5. Mount the block devices
+```sh
+mount /dev/sdb /mnt/disk1
+mount /dev/sdc /mnt/disk2
+```
+
+6. Edit the file system configuration so that the drives are mounted correctly upon VM restart
+```sh
+nano /etc/fstab
+
+# <file system>  <mount point>  <type>  <options>         <dump>  <pass>
+LABEL=DISK1      /mnt/disk1     xfs     defaults,noatime  0       2
+LABEL=DISK2      /mnt/disk2     xfs     defaults,noatime  0       2
+
+```
+
+7. Edit the domain name resolver to accommodate MinIO expansion notation
+```sh
+nano /etc/hosts
+
+external-ip-1 minio1
+external-ip-2 minio2
+
+```
+8. Download and prepare MinIO binary
+```sh
+wget https://dl.min.io/server/minio/release/linux-amd64/archive/minio_20230707071357.0.0_amd64.deb -O minio.deb
+sudo dpkg -i minio.deb
+
+```
+
+9. Run MinIO
+```sh
+minio server --console-address ":9090" "http://minio{1...2}/mnt/disk{1...2}/minio"
+
+```
+
+10. Open MinIO management console
+Go to your browser and supply the external-ip of one of the nodes along with the port 9090 like so:
+http://34.116.150.222:9090
