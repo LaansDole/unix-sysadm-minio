@@ -1,4 +1,4 @@
-![2](https://github.com/LaansDole/unix-sysadm-MinIO/assets/88642920/d592a6a4-43d6-4765-8183-a9b1b15e6d28)![header image](assets/cosc2156.png)
+![header image](assets/cosc2156.png)
 
 # COSC2156 Unix Systems Administration and Programming (Linux) - MinIO Storage
 #### Project Start Date: 04/08/2023
