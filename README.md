@@ -69,7 +69,7 @@ Command-line: https://min.io/docs/minio/linux/reference/minio-mc.html#quickstart
 
 Documentation: https://min.io/docs/minio/linux/index.html
 ```
-
+![MinIO Console](assets/MinIO-Ubuntu-Console.png)
 The following table lists supported architectures. Replace the `wget` URL with the architecture for your Linux host.
 
 | Architecture                   | URL                                                        |
