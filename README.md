@@ -21,6 +21,8 @@ on any cloud (public or private) and from the data center to the edge.
 
 This README provides quickstart instructions on running MinIO on Google Cloud Platform (GCP) and VirtualBox Ubuntu. View more [here](https://github.com/minio/minio/#readme)
 
+![MinIO on different platforms](assets/MinIO-Platforms.png)
+
 ## Project Demo on GNU/Linux (VirtualBox Ubuntu)
 Use the following command to run a standalone MinIO server on Linux hosts running 64-bit Intel/AMD architectures.
 
