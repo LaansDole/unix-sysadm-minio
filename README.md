@@ -109,7 +109,7 @@ mc ls -r local
 ```
 
 
-## Project Demo on GNU/Linux (GCP Ubuntu)
+## Project Demo MinIO distributed on GNU/Linux (GCP Ubuntu)
 Use the following command to run a distributed MinIO object storage system on a GCP cloud server. 
 1. Create GCP VM instances (repeat at least 2 times)
 ![1](https://github.com/LaansDole/unix-sysadm-MinIO/assets/88642920/69154cca-6e4b-4521-bd7d-e9319d8b3764)
@@ -169,3 +169,15 @@ minio server --console-address ":9090" "http://minio{1...2}/mnt/disk{1...2}/mini
 10. Open MinIO management console
 Go to your browser and supply the external-ip of one of the nodes along with the port 9090 like so:
 http://34.116.150.222:9090
+
+## Project Demo MinIO quickstart on GNU/Linux Docker (GCP Ubuntu Docker)
+1. Install Docker
+```sh
+minio server --console-address ":9090" "http://minio{1...2}/mnt/disk{1...2}/minio"
+
+```
+2. Docker run MinIO
+```sh
+docker run -p 9000:9000 -d -p 9090:9090 -e "MINIO_ROOT_USER=minioadmin" -e "MINIO_ROOT_PASSWORD=minioadmin" quay.io/minio/minio server /data --console-address ":9090"
+
+```
